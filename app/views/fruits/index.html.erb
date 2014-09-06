@@ -1,0 +1,32 @@
+<h1>Listing fruits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Latin Name</th>
+      <th>Other Names</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fruits.each do |fruit| %>
+      <tr>
+        <td><%= fruit.name %></td>
+        <td><%= fruit.latinName %></td>
+        <td><%= fruit.otherNames %></td>
+        <td><%= fruit.description %></td>
+        <td><%= image_tag(fruit.image) %></td>
+        <td><%= link_to 'Show', fruit %></td>
+      </tr>
+    <% end %>
+    <%= will_paginate(@fruits, :renderer => WillPaginate::ActionView::LinkRenderer) %>>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fruit', new_fruit_path %>
